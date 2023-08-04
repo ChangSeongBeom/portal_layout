@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:1234@14.46.161.156:3306/admin"
+  url      = "mysql://root:1234@host.docker.internal:3306/admin"
 }
 
 model User {
