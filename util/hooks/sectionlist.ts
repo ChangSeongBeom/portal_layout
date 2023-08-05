@@ -34,9 +34,22 @@ export default function useSectionList() {
       console.log(error);
     }
   }
+  async function deleteSection(sectionId) {
+    const resp = await fetch(`/api/section/${sectionId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    setSectionList((prev) =>
+      prev.filter((section) => section.id !== sectionId)
+    );
+  }
+
 
   return {
     sectionList,
+    deleteSection,
     setSectionList,
     isLoading,
   };

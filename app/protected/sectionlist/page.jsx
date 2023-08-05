@@ -6,6 +6,7 @@ import Grid from "../../../components/Grid";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import styled from "styled-components";
+import toast from "react-hot-toast";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -102,8 +103,8 @@ import useSection from "util/hooks/section";
 import useSectionList from "util/hooks/sectionlist";
 
 export default function SectionList() {
-  const { sectionList } = useSectionList();
 
+  const { sectionList, deleteSection } = useSectionList();
   return (
     <PortalLayoutContainer>
       <StyledContainer>
@@ -154,6 +155,17 @@ export default function SectionList() {
                       href={`/protected/section?sectionId=${row.id}&sectionName=${row.name}`}
                     >
                       확인
+                    </Button>
+                    <Button
+                      size="small"
+                      color="warning"
+                      onClick={() => {
+                        deleteSection(row.id).then(() => {
+                          toast.success(`${row.name} 삭제 완료`);
+                        });
+                      }}
+                    >
+                      삭제
                     </Button>
                   </TableCell>
                   {/* <TableCell component="th" scope="row">

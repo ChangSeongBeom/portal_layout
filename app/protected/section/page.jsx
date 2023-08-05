@@ -81,6 +81,28 @@ export default function Home() {
                   }}
                 />
               </div>
+
+              <button
+                  className="text-2xl"
+                  onClick={() => {
+                    //* 여기서 sectionId 값 """
+                    var id = "";
+                    if (!sectionId) {
+                      id = crypto.randomUUID();
+                    } else {
+                      id = sectionId;
+                    }
+                    createSection({
+                      id: id,
+                      name: sectionName,
+                      LayoutItems: layout,
+                    }).then(() => {
+                      router.push("/protected/sectionlist");
+                    });
+                  }}
+                >
+                  저장
+                </button>
               
               
             </div>
