@@ -7,10 +7,10 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:1234@host.docker.internal:3306/admin"
+  url      = "mysql://root:1234@host.docker.internal:3306/es"
 }
 
-model User {
+model User2 {
   // id       Int    @id @default(autoincrement())
   id       String     @id @unique
   password String
@@ -42,7 +42,7 @@ model ToDoList {
   title     String
   createdAt DateTime   @default(now())
   ToDoCards ToDoCard[]
-  owner     User       @relation(fields: [ownerId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "todoList_ownerId_fkey")
+  owner     User2       @relation(fields: [ownerId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "todoList_ownerId_fkey")
 }
 
 model ToDoCard {

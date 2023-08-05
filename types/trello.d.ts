@@ -4,7 +4,7 @@ type ToDoList = {
   title: string;
   createdAt: Date;
   ToDoCards: ToDoCard[];
-  owner: User | null;
+  owner: User2 | null;
 };
 
 type CreateToDoListDTO = {
