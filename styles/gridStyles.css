@@ -1,11 +1,16 @@
 .react-grid-layout {
   position: relative;
   transition: height 200ms ease;
+  
 }
 .react-grid-item {
   transition: all 200ms ease;
   transition-property: left, top;
-  background-color: lightgray;
+  background-color: white;
+  max-width: 950px;
+  border-right: 2px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
 }
 .react-grid-item.cssTransforms {
   transition-property: transform;

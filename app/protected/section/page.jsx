@@ -6,6 +6,11 @@ import Grid from "../../../components/Grid";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import useSection from "util/hooks/section";
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+
 // responsive grid 생성
 const ResponsiveGridLayout = WidthProvider(Responsive);
 export default function Home() {
@@ -62,7 +67,23 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <div className="flex items-stretch">
-        <div className="relative w-[1200px]">
+      
+        <div className="relative w-[900px] ">
+          <div className="relative w-[100px] h-[100px]">
+            <div >
+                <div >부문명</div>
+                <input
+                  className="ml-4 px-2 bg-gray-200"
+                  value={sectionName}
+                  onChange={(e) => {
+                    console.log(e.target.value);
+                    setSectionName(e.target.value);
+                  }}
+                />
+              </div>
+              
+              
+            </div>
           <Grid
             props={{
               layout: layout,
@@ -71,42 +92,9 @@ export default function Home() {
             }}
           />
         </div>
-        <div className="ComponentList  mt-4 flex flex-col gap-6 items-center">
-          <div className="flex w-max space-x-4">
-            <div className="text-2xl flex">
-              <p>부문명</p>
-              <input
-                className="ml-4 px-2 bg-gray-200"
-                value={sectionName}
-                onChange={(e) => {
-                  console.log(e.target.value);
-                  setSectionName(e.target.value);
-                }}
-              />
-            </div>
-            <button
-              className="text-2xl"
-              onClick={() => {
-                //* 여기서 sectionId 값 """
-                var id = "";
-                if (!sectionId) {
-                  id = crypto.randomUUID();
-                } else {
-                  id = sectionId;
-                }
-                createSection({
-                  id: id,
-                  name: sectionName,
-                  LayoutItems: layout,
-                }).then(() => {
-                  router.push("/protected/sectionlist");
-                });
-              }}
-            >
-              저장
-            </button>
-          </div>
-          <div className="ComponentList border border-black gap-y-3 p-6 mr-2 w-[10rem] h-fit flex flex-col items-center">
+        <div className="ComponentList ml-50 mt-4 flex flex-col gap-6 items-center">
+       
+          <div className="ComponentList border border-black gap-y-3 p-6 mr-2 ml-20 w-[10rem] h-fit flex flex-col items-center rounded">
             {componentList.map((item) => {
               return (
                 <button
