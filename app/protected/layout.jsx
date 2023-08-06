@@ -10,7 +10,7 @@ export default async function ToDoLayout({ children }) {
     <div className="w-screen h-screen flex flex-col">
       <Nav />
       <div className="flex-1 flex mt-[90px]">
-        <div className="Templates bg-white-50 w-[9rem] flex justify-center border-t border-navy-700 border-3">
+        <div className="Templates bg-white-50 w-[10rem] flex justify-center border-t border-navy-700 border-3">
           <ul className="flex flex-col mt-4 gap-4">
             <li className="mx-auto">
               <Link href={"/protected/sectionlist"}>포탈 리스트</Link>
