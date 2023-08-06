@@ -82,8 +82,7 @@ export default function Grid({ props }) {
                 setClickedBox("");
               }}
             >
-              drag
-              {/* <Icon icon="icomoon-free:bin" /> */}
+              <Icon icon="icon-park-twotone:move" />
             </button>
             <button
               className={
@@ -106,7 +105,7 @@ export default function Grid({ props }) {
                 setClickedBox("");
               }}
             >
-              resize
+              <Icon icon="iconoir:drag" />
               {/* <Icon icon="icomoon-free:bin" /> */}
             </button>
           </div>

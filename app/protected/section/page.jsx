@@ -69,7 +69,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex items-stretch">
+      <div className="flex items-stretch flex-col">
       
         <div className="relative w-[900px] ">
         <div className=" w-[100px] h-[100px] flex flex-row">  
@@ -133,7 +133,41 @@ export default function Home() {
             }}
           />
         </div>
-      
+        <div className="ComponentList ml-50 mt-4 flex flex-col gap-6 items-center">
+       
+          <div className="ComponentList border border-black gap-y-3 p-6 mr-2 ml-20 w-[10rem] h-fit flex flex-col items-center rounded">
+            {componentList.map((item) => {
+              return (
+                <button
+                  key={crypto.randomUUID()}
+                  onClick={() => {
+                    console.log("컴포넌트 추가 : ", item.name);
+                    const id = item.name + ":" + crypto.randomUUID();
+                    setLayOut((prev) => [
+                      ...prev,
+                      {
+                        i: id,
+                        x: 0,
+                        y: Infinity,
+                        w: 2,
+                        h: 2,
+                        name: `new ${item.name}`,
+                        isResizable: false,
+                        isDraggable: false,
+                        static: false,
+                      },
+                    ]);
+                    setComponentList((prev) => {
+                      return prev.filter((comp) => comp.id !== item.id);
+                    });
+                  }}
+                >
+                  {item.name}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
