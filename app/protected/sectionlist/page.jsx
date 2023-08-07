@@ -130,7 +130,7 @@ export default function SectionList() {
           >
             <TableHead>
               <TableRow>
-                <TableCell>포탈 레이아웃 리스트</TableCell>
+                <TableCell >포탈 레이아웃 리스트</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

@@ -12,7 +12,15 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
 
+
+
+const Div = styled('div')(({ theme }) => ({
+  ...theme.typography.button,
+  backgroundColor: theme.palette.background.paper,
+  padding: theme.spacing(1),
+}));
 
 // responsive grid 생성
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -34,18 +42,18 @@ export default function Home() {
   } = useSection();
 
   const [componentList, setComponentList] = useState([
-    { name: "컴포넌트A", id: "A" },
-    { name: "컴포넌트B", id: "B" },
-    { name: "컴포넌트C", id: "C" },
-    { name: "컴포넌트D", id: "D" },
-    { name: "컴포넌트E", id: "E" },
+    { name: "정규학습", id: "A" },
+    { name: "상시학습", id: "B" },
+    { name: "커뮤니티", id: "C" },
+    { name: "인증", id: "D" },
+    { name: "사외교육", id: "E" },
   ]);
   const conponentListInit = [
-    { name: "컴포넌트A", id: "A" },
-    { name: "컴포넌트B", id: "B" },
-    { name: "컴포넌트C", id: "C" },
-    { name: "컴포넌트D", id: "D" },
-    { name: "컴포넌트E", id: "E" },
+    { name: "정규학습", id: "A" },
+    { name: "상시학습", id: "B" },
+    { name: "커뮤니티", id: "C" },
+    { name: "인증", id: "D" },
+    { name: "사외교육", id: "E" },
   ];
 
   useEffect(() => {
@@ -134,11 +142,15 @@ export default function Home() {
           />
         </div>
         <div className="ComponentList ml-50 mt-4 flex flex-col gap-6 items-center">
-       
-          <div className="ComponentList border border-black gap-y-3 p-6 mr-2 ml-20 w-[10rem] h-fit flex flex-col items-center rounded">
-            {componentList.map((item) => {
+        
+        <div
+              className="ComponentList border border-black p-6 mr-2 ml-0 w-[15rem]   flex flex-col items-center rounded"
+              style={{ backgroundColor: 'white', color: 'black' }}
+            >
+              <Div>{"클릭하여 포탈 레이아웃 생성"}</Div>
+              {componentList.map((item) => {
               return (
-                <button
+                <Button
                   key={crypto.randomUUID()}
                   onClick={() => {
                     console.log("컴포넌트 추가 : ", item.name);
@@ -149,8 +161,8 @@ export default function Home() {
                         i: id,
                         x: 0,
                         y: Infinity,
-                        w: 2,
-                        h: 2,
+                        w: 6,
+                        h: 8,
                         name: `new ${item.name}`,
                         isResizable: false,
                         isDraggable: false,
@@ -163,7 +175,7 @@ export default function Home() {
                   }}
                 >
                   {item.name}
-                </button>
+                </Button>
               );
             })}
           </div>
@@ -172,3 +184,6 @@ export default function Home() {
     </div>
   );
 }
+
+
+
